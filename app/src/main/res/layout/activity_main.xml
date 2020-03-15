@@ -23,58 +23,141 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/txtScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:text="Score 1/10"
+            android:textAlignment="center"
             android:textColor="#000"
             android:textSize="22sp"
-            android:textAlignment="center"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="6dp"
-            android:text="Score 1/10"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtCorrect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:text="Correct: 7"
+            android:textAlignment="center"
             android:textColor="#000"
             android:textSize="22sp"
-            android:layout_marginEnd="10dp"
-            android:textAlignment="center"
-            android:layout_marginTop="5dp"
-            android:text="Correct: 7"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtWrong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:text="Wrong: 0"
+            android:textAlignment="center"
             android:textColor="#000"
             android:textSize="22sp"
-            android:layout_marginEnd="10dp"
-            android:textAlignment="center"
-            android:layout_marginTop="5dp"
-            android:text="Wrong: 0"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtViewTimer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:text="0:00"
+            android:textAlignment="center"
             android:textColor="#000"
             android:textSize="22sp"
-            android:layout_marginEnd="10dp"
-            android:textAlignment="center"
-            android:layout_marginTop="5dp"
-            android:text="0:00"/>
+            android:textStyle="bold" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:textColor="#000"
+            android:text="Where do you hope your boyfriend takes you this weekend?" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <RadioButton
+                android:id="@+id/radioButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RadioButton"
+                android:textColor="#000"
+                android:textSize="22sp"
+                android:padding="12dp"
+                android:layout_marginTop="10dp"
+                android:button="@null"
+                android:freezesText="true"/>
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RadioButton"
+                android:textColor="#000"
+                android:textSize="22sp"
+                android:padding="12dp"
+                android:layout_marginTop="10dp"
+                android:button="@null"
+                android:freezesText="true"/>
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RadioButton"
+                android:textColor="#000"
+                android:textSize="22sp"
+                android:padding="12dp"
+                android:layout_marginTop="10dp"
+                android:button="@null"
+                android:freezesText="true"/>
+
+            <RadioButton
+                android:id="@+id/radioButton4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RadioButton"
+                android:textColor="#000"
+                android:textSize="22sp"
+                android:padding="12dp"
+                android:layout_marginTop="10dp"
+                android:button="@null"
+                android:freezesText="true"/>
+        </RadioGroup>
     </LinearLayout>
 
 
