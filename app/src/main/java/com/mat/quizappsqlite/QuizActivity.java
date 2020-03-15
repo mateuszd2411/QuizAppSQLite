@@ -8,6 +8,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class QuizActivity extends AppCompatActivity {
 
     private RadioGroup rbGroup;
@@ -24,12 +26,19 @@ public class QuizActivity extends AppCompatActivity {
     private TextView textViewCountDown;
     private TextView textViewCorrect, textViewWrong;
 
+    private ArrayList<Questions> questionList;
+    private int questionCounter;
+    private int questionTotalCount;
+    private Questions currentQuestions;
+    private boolean answered;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
         setupUI();
+        fetchDB();
 
     }
 
@@ -48,6 +57,13 @@ public class QuizActivity extends AppCompatActivity {
         rb2 = findViewById(R.id.radioButton2);
         rb3 = findViewById(R.id.radioButton3);
         rb4 = findViewById(R.id.radioButton4);
+
+    }
+
+    private void fetchDB(){
+
+        QuizDbHelper dbHelper = new QuizDbHelper(this);
+        questionList = dbHelper.getAllQuestions();
 
     }
 }

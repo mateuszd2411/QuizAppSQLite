@@ -2,6 +2,7 @@ package com.mat.quizappsqlite;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -9,6 +10,9 @@ import com.mat.quizappsqlite.QuizContract.QuestionTable;
 
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class QuizDbHelper extends SQLiteOpenHelper {
 
@@ -22,7 +26,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+    public void onCreate(SQLiteDatabase db) {
         this.db = db;
 
         final  String SQL_CREATE_QUESTIONS_TABLE = "CREATE TABLE " +
@@ -38,11 +42,11 @@ public class QuizDbHelper extends SQLiteOpenHelper {
 
         db.execSQL(SQL_CREATE_QUESTIONS_TABLE);
 
-        fillQuestionsTabele();
+        fillQuestionsTabele(); //insert the data inside the table
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
         db.execSQL("DROP TABLE IF EXISTS " + QuestionTable.TABLE_NAME);
         onCreate(db);
@@ -77,6 +81,51 @@ public class QuizDbHelper extends SQLiteOpenHelper {
 
         Questions q5 = new Questions("Your man's friends are mostly:", "eyegfgfgs", "ffff", "abgdfgfds", "smigfdgdle", 1);
         addQuestions(q5);
+    }
 
+    public ArrayList<Questions> getAllQuestions(){
+
+        ArrayList<Questions> questionsList = new ArrayList<>();
+
+        db = getReadableDatabase();
+
+        String Projection[] = {
+
+                QuestionTable._ID,
+                QuestionTable.COLUMN_QUESTION,
+                QuestionTable.COLUMN_OPTION1,
+                QuestionTable.COLUMN_OPTION2,
+                QuestionTable.COLUMN_OPTION3,
+                QuestionTable.COLUMN_OPTION4,
+                QuestionTable.COLUMN_ANSWER_NR
+        };
+
+        Cursor c = db.query(QuestionTable.TABLE_NAME,
+                Projection,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+
+        if (c.moveToFirst()){
+
+            do {
+
+                Questions questions = new Questions();
+                questions.setQuestion(c.getString(c.getColumnIndex(QuestionTable.COLUMN_QUESTION)));
+                questions.setQuestion(c.getString(c.getColumnIndex(QuestionTable.COLUMN_OPTION1)));
+                questions.setQuestion(c.getString(c.getColumnIndex(QuestionTable.COLUMN_OPTION2)));
+                questions.setQuestion(c.getString(c.getColumnIndex(QuestionTable.COLUMN_OPTION3)));
+                questions.setQuestion(c.getString(c.getColumnIndex(QuestionTable.COLUMN_OPTION4)));
+                questions.setQuestion(c.getString(c.getColumnIndex(QuestionTable.COLUMN_ANSWER_NR)));
+
+                questionsList.add(questions);
+
+            } while (c.moveToNext());
+        }
+        c.close();  /// closing the cursor
+        return questionsList;
     }
 }
