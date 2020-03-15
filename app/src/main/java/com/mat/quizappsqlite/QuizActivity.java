@@ -2,7 +2,9 @@ package com.mat.quizappsqlite;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -32,6 +34,8 @@ public class QuizActivity extends AppCompatActivity {
     private Questions currentQuestions;
     private boolean answered;
 
+
+    private Handler handler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,4 +70,41 @@ public class QuizActivity extends AppCompatActivity {
         questionList = dbHelper.getAllQuestions();
 
     }
+
+
+    private void showQuestions(){
+
+        rbGroup.clearCheck();
+
+        if (questionCounter < questionTotalCount){
+
+            currentQuestions = questionList.get(questionCounter);
+            textViewQuestions.setText(currentQuestions.getQuestion());
+            rb1.setText(currentQuestions.getOption1());
+            rb2.setText(currentQuestions.getOption2());
+            rb3.setText(currentQuestions.getOption3());
+            rb4.setText(currentQuestions.getOption4());
+
+            questionCounter++;
+            answered = false;
+
+            buttonConfirmNext.setText("Confirm");
+
+            textViewQuestionsCount.setText("Questions: " + questionCounter + "/" + questionTotalCount);
+        } else {
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    Intent intent = new Intent(getApplicationContext(), QuizActivity.class);
+                    startActivity(intent);
+
+                }
+            }, 500);
+
+        }
+
+    }
+
 }
