@@ -5,6 +5,7 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -176,6 +177,12 @@ public class QuizActivity extends AppCompatActivity {
         rb3.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.buttons_background));
         rb4.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.buttons_background));
 
+        rb1.setTextColor(Color.BLACK);
+        rb2.setTextColor(Color.BLACK);
+        rb3.setTextColor(Color.BLACK);
+        rb4.setTextColor(Color.BLACK);
+
+
 
         if (questionCounter < questionTotalCount){
             currentQuestions = questionList.get(questionCounter);
@@ -226,13 +233,13 @@ public class QuizActivity extends AppCompatActivity {
                 if (currentQuestions.getAnswerNr() == answerNr){
 
                     rb1.setBackground(ContextCompat.getDrawable(this,R.drawable.when_answer_correct));
-
+                    rb1.setTextColor(Color.WHITE);
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             showQuestions();
                         }
-                    },500);
+                    },1000);
 
 
 
@@ -245,7 +252,7 @@ public class QuizActivity extends AppCompatActivity {
                         public void run() {
                             showQuestions();
                         }
-                    },500);
+                    },1000);
                 }
                 break;
 
@@ -253,12 +260,13 @@ public class QuizActivity extends AppCompatActivity {
                 if (currentQuestions.getAnswerNr() == answerNr){
 
                     rb2.setBackground(ContextCompat.getDrawable(this,R.drawable.when_answer_correct));
+                    rb2.setTextColor(Color.WHITE);
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             showQuestions();
                         }
-                    },500);
+                    },1000);
 
                 } else {
 
@@ -268,7 +276,7 @@ public class QuizActivity extends AppCompatActivity {
                         public void run() {
                             showQuestions();
                         }
-                    },500);
+                    },1000);
                 }
                 break;
 
@@ -276,6 +284,7 @@ public class QuizActivity extends AppCompatActivity {
                 if (currentQuestions.getAnswerNr() == answerNr){
 
                     rb3.setBackground(ContextCompat.getDrawable(this,R.drawable.when_answer_correct));
+                    rb3.setTextColor(Color.WHITE);
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -299,7 +308,7 @@ public class QuizActivity extends AppCompatActivity {
                 if (currentQuestions.getAnswerNr() == answerNr){
 
                     rb4.setBackground(ContextCompat.getDrawable(this,R.drawable.when_answer_correct));
-
+                    rb4.setTextColor(Color.WHITE);
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -332,6 +341,7 @@ public class QuizActivity extends AppCompatActivity {
     private void changetoIncorrectColor(RadioButton rbselected) {
 
         rbselected.setBackground(ContextCompat.getDrawable(this,R.drawable.when_answer_wrong));
+        rbselected.setTextColor(Color.WHITE);
 
     }
 
