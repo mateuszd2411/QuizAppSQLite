@@ -48,6 +48,10 @@ public class QuizActivity extends AppCompatActivity {
 
     private int correctAns = 0, wrongAns = 0;
 
+    private FinalScoreDialog finalScoreDialog;
+
+    private int totalSzieofQuiz = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +63,8 @@ public class QuizActivity extends AppCompatActivity {
         fetchDB();
 
         buttonLabelColor = rb1.getTextColors();
+
+        finalScoreDialog = new FinalScoreDialog(this);
 
     }
 
@@ -85,10 +91,7 @@ public class QuizActivity extends AppCompatActivity {
 
         QuizDbHelper dbHelper = new QuizDbHelper(this);
         questionList = dbHelper.getAllQuestions();
-
         startQuiz();
-
-
 
     }
 
@@ -202,15 +205,16 @@ public class QuizActivity extends AppCompatActivity {
             textViewQuestionsCount.setText("Questions: " + questionCounter + "/" + questionTotalCount);
         } else {
 
+            totalSzieofQuiz  =questionList.size();
+
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
 
-                    Intent intent = new Intent(getApplicationContext(), QuizActivity.class);
-                    startActivity(intent);
+                finalScoreDialog.finalScoreDialog(correctAns,wrongAns,totalSzieofQuiz);
 
                 }
-            }, 500);
+            }, 1000);
 
         }
 
