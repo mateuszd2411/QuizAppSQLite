@@ -46,6 +46,8 @@ public class QuizActivity extends AppCompatActivity {
 
     private ColorStateList buttonLabelColor;
 
+    private int correctAns = 0, wrongAns = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -234,6 +236,10 @@ public class QuizActivity extends AppCompatActivity {
 
                     rb1.setBackground(ContextCompat.getDrawable(this,R.drawable.when_answer_correct));
                     rb1.setTextColor(Color.WHITE);
+
+                    correctAns++;
+                    textViewCorrect.setText("Correct: " + String.valueOf(correctAns));
+
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -246,6 +252,9 @@ public class QuizActivity extends AppCompatActivity {
                 } else {
 
                     changetoIncorrectColor(rbselected);
+
+                    wrongAns++;
+                    textViewWrong.setText("Wrong: " + String.valueOf(wrongAns));
 
                     handler.postDelayed(new Runnable() {
                         @Override
@@ -261,6 +270,10 @@ public class QuizActivity extends AppCompatActivity {
 
                     rb2.setBackground(ContextCompat.getDrawable(this,R.drawable.when_answer_correct));
                     rb2.setTextColor(Color.WHITE);
+
+                    correctAns++;
+                    textViewCorrect.setText("Correct: " + String.valueOf(correctAns));
+
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -271,6 +284,10 @@ public class QuizActivity extends AppCompatActivity {
                 } else {
 
                     changetoIncorrectColor(rbselected);
+
+                    wrongAns++;
+                    textViewWrong.setText("Wrong: " + String.valueOf(wrongAns));
+
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -285,6 +302,10 @@ public class QuizActivity extends AppCompatActivity {
 
                     rb3.setBackground(ContextCompat.getDrawable(this,R.drawable.when_answer_correct));
                     rb3.setTextColor(Color.WHITE);
+
+                    correctAns++;
+                    textViewCorrect.setText("Correct: " + String.valueOf(correctAns));
+
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -295,6 +316,10 @@ public class QuizActivity extends AppCompatActivity {
                 } else {
 
                     changetoIncorrectColor(rbselected);
+
+                    wrongAns++;
+                    textViewWrong.setText("Wrong: " + String.valueOf(wrongAns));
+
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -309,6 +334,10 @@ public class QuizActivity extends AppCompatActivity {
 
                     rb4.setBackground(ContextCompat.getDrawable(this,R.drawable.when_answer_correct));
                     rb4.setTextColor(Color.WHITE);
+
+                    correctAns++;
+                    textViewCorrect.setText("Correct: " + String.valueOf(correctAns));
+
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -318,6 +347,9 @@ public class QuizActivity extends AppCompatActivity {
 
                 } else {
                     changetoIncorrectColor(rbselected);
+
+                    wrongAns++;
+                    textViewWrong.setText("Wrong: " + String.valueOf(wrongAns));
 
                     handler.postDelayed(new Runnable() {
                         @Override
