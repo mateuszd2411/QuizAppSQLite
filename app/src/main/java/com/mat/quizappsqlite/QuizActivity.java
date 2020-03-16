@@ -50,6 +50,10 @@ public class QuizActivity extends AppCompatActivity {
 
     private FinalScoreDialog finalScoreDialog;
 
+    private CorrectDialog correctDialog;
+    private WrongDialog wrongDialog;
+    int score = 0;
+
     private int totalSzieofQuiz = 0;
 
 
@@ -65,6 +69,8 @@ public class QuizActivity extends AppCompatActivity {
         buttonLabelColor = rb1.getTextColors();
 
         finalScoreDialog = new FinalScoreDialog(this);
+        correctDialog = new CorrectDialog(this);
+        wrongDialog = new WrongDialog(this);
 
     }
 
@@ -244,12 +250,17 @@ public class QuizActivity extends AppCompatActivity {
                     correctAns++;
                     textViewCorrect.setText("Correct: " + String.valueOf(correctAns));
 
+                    score += 10;
+                    textViewScore.setText("Score: " + String.valueOf(score));
+                    correctDialog.correctDialog(score);
+
+
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             showQuestions();
                         }
-                    },1000);
+                    },2000);
 
 
 
@@ -260,12 +271,16 @@ public class QuizActivity extends AppCompatActivity {
                     wrongAns++;
                     textViewWrong.setText("Wrong: " + String.valueOf(wrongAns));
 
+                    String correctAnswer = (String) rb1.getText();
+                    wrongDialog.wrongDialog(correctAnswer);
+
+
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             showQuestions();
                         }
-                    },1000);
+                    },500);
                 }
                 break;
 
@@ -278,12 +293,16 @@ public class QuizActivity extends AppCompatActivity {
                     correctAns++;
                     textViewCorrect.setText("Correct: " + String.valueOf(correctAns));
 
+                    score += 10;
+                    textViewScore.setText("Score: " + String.valueOf(score));
+                    correctDialog.correctDialog(score);
+
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             showQuestions();
                         }
-                    },1000);
+                    },2000);
 
                 } else {
 
@@ -292,12 +311,15 @@ public class QuizActivity extends AppCompatActivity {
                     wrongAns++;
                     textViewWrong.setText("Wrong: " + String.valueOf(wrongAns));
 
+                    String correctAnswer = (String) rb2.getText();
+                    wrongDialog.wrongDialog(correctAnswer);
+
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             showQuestions();
                         }
-                    },1000);
+                    },500);
                 }
                 break;
 
@@ -310,12 +332,16 @@ public class QuizActivity extends AppCompatActivity {
                     correctAns++;
                     textViewCorrect.setText("Correct: " + String.valueOf(correctAns));
 
+                    score += 10;
+                    textViewScore.setText("Score: " + String.valueOf(score));
+                    correctDialog.correctDialog(score);
+
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             showQuestions();
                         }
-                    },500);
+                    },2000);
 
                 } else {
 
@@ -323,6 +349,9 @@ public class QuizActivity extends AppCompatActivity {
 
                     wrongAns++;
                     textViewWrong.setText("Wrong: " + String.valueOf(wrongAns));
+
+                    String correctAnswer = (String) rb3.getText();
+                    wrongDialog.wrongDialog(correctAnswer);
 
                     handler.postDelayed(new Runnable() {
                         @Override
@@ -342,18 +371,25 @@ public class QuizActivity extends AppCompatActivity {
                     correctAns++;
                     textViewCorrect.setText("Correct: " + String.valueOf(correctAns));
 
+                    score += 10;
+                    textViewScore.setText("Score: " + String.valueOf(score));
+                    correctDialog.correctDialog(score);
+
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             showQuestions();
                         }
-                    },500);
+                    },2000);
 
                 } else {
                     changetoIncorrectColor(rbselected);
 
                     wrongAns++;
                     textViewWrong.setText("Wrong: " + String.valueOf(wrongAns));
+
+                    String correctAnswer = (String) rb4.getText();
+                    wrongDialog.wrongDialog(correctAnswer);
 
                     handler.postDelayed(new Runnable() {
                         @Override
