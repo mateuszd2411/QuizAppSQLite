@@ -226,16 +226,16 @@ public class QuizActivity extends AppCompatActivity {
 
         } else {
 
-            totalSzieofQuiz  =questionList.size();
+
 
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
 
-                finalScoreDialog.finalScoreDialog(correctAns,wrongAns,totalSzieofQuiz);
+               /// result activity
 
                 }
-            }, 1000);
+            }, 2000);
 
         }
 
