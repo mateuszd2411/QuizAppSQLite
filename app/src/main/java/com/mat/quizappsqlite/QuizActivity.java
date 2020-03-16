@@ -189,7 +189,7 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
-    private void showQuestions(){
+    public void showQuestions(){
 
         rbGroup.clearCheck();
 
@@ -226,13 +226,20 @@ public class QuizActivity extends AppCompatActivity {
 
         } else {
 
+            Toast.makeText(this, "Finish!", Toast.LENGTH_SHORT).show();
+
+            rb1.setClickable(false);
+            rb2.setClickable(false);
+            rb3.setClickable(false);
+            rb4.setClickable(false);
+            buttonConfirmNext.setClickable(false);
 
 
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
 
-               /// result activity
+               finalResult();
 
                 }
             }, 2000);
@@ -270,17 +277,11 @@ public class QuizActivity extends AppCompatActivity {
 
                     score += 10;
                     textViewScore.setText("Score: " + String.valueOf(score));
-                    correctDialog.correctDialog(score);
+                    correctDialog.correctDialog(score, this);
 
                     FLAG = 1;
                     playAudioForAnswers.setAudioforAnswer(FLAG);
 
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            showQuestions();
-                        }
-                    },2000);
 
 
 
@@ -292,7 +293,7 @@ public class QuizActivity extends AppCompatActivity {
                     textViewWrong.setText("Wrong: " + String.valueOf(wrongAns));
 
                     String correctAnswer = (String) rb1.getText();
-                    wrongDialog.wrongDialog(correctAnswer);
+                    wrongDialog.wrongDialog(correctAnswer, this);
 
                     FLAG = 2;
                     playAudioForAnswers.setAudioforAnswer(FLAG);
@@ -317,17 +318,11 @@ public class QuizActivity extends AppCompatActivity {
 
                     score += 10;
                     textViewScore.setText("Score: " + String.valueOf(score));
-                    correctDialog.correctDialog(score);
+                    correctDialog.correctDialog(score, this);
 
                     FLAG = 1;
                     playAudioForAnswers.setAudioforAnswer(FLAG);
 
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            showQuestions();
-                        }
-                    },2000);
 
                 } else {
 
@@ -337,7 +332,7 @@ public class QuizActivity extends AppCompatActivity {
                     textViewWrong.setText("Wrong: " + String.valueOf(wrongAns));
 
                     String correctAnswer = (String) rb2.getText();
-                    wrongDialog.wrongDialog(correctAnswer);
+                    wrongDialog.wrongDialog(correctAnswer, this);
 
                     FLAG = 2;
                     playAudioForAnswers.setAudioforAnswer(FLAG);
@@ -362,17 +357,12 @@ public class QuizActivity extends AppCompatActivity {
 
                     score += 10;
                     textViewScore.setText("Score: " + String.valueOf(score));
-                    correctDialog.correctDialog(score);
+                    correctDialog.correctDialog(score, this);
 
                     FLAG = 1;
                     playAudioForAnswers.setAudioforAnswer(FLAG);
 
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            showQuestions();
-                        }
-                    },2000);
+
 
                 } else {
 
@@ -382,7 +372,7 @@ public class QuizActivity extends AppCompatActivity {
                     textViewWrong.setText("Wrong: " + String.valueOf(wrongAns));
 
                     String correctAnswer = (String) rb3.getText();
-                    wrongDialog.wrongDialog(correctAnswer);
+                    wrongDialog.wrongDialog(correctAnswer, this);
 
                     FLAG = 2;
                     playAudioForAnswers.setAudioforAnswer(FLAG);
@@ -407,17 +397,11 @@ public class QuizActivity extends AppCompatActivity {
 
                     score += 10;
                     textViewScore.setText("Score: " + String.valueOf(score));
-                    correctDialog.correctDialog(score);
+                    correctDialog.correctDialog(score, this);
 
                     FLAG = 1;
                     playAudioForAnswers.setAudioforAnswer(FLAG);
 
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            showQuestions();
-                        }
-                    },2000);
 
                 } else {
                     changetoIncorrectColor(rbselected);
@@ -426,7 +410,7 @@ public class QuizActivity extends AppCompatActivity {
                     textViewWrong.setText("Wrong: " + String.valueOf(wrongAns));
 
                     String correctAnswer = (String) rb4.getText();
-                    wrongDialog.wrongDialog(correctAnswer);
+                    wrongDialog.wrongDialog(correctAnswer, this);
 
                     FLAG = 2;
                     playAudioForAnswers.setAudioforAnswer(FLAG);
@@ -533,4 +517,19 @@ public class QuizActivity extends AppCompatActivity {
             countDownTimer.cancel();
         }
     }
+
+
+    private void finalResult(){
+
+        Intent resultData = new Intent(QuizActivity.this, ResultActivity.class);
+
+        resultData.putExtra("UserScore", score);
+        resultData.putExtra("TotalQuestion", questionTotalCount);
+        resultData.putExtra("CorrectQues", correctAns);
+        resultData.putExtra("WrongQues", wrongAns);
+        startActivity(resultData);
+
+    }
+
+
 }

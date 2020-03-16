@@ -12,12 +12,16 @@ public class WrongDialog {
 
     private Dialog wrongDialog;
 
+    private QuizActivity mquizActivity;
+
 
     public WrongDialog(Context mContext) {
         this.mContext = mContext;
     }
 
-    public void wrongDialog(String correctAnswer){
+    public void wrongDialog(String correctAnswer, final QuizActivity quizActivity){
+
+        mquizActivity = quizActivity;
 
         wrongDialog = new Dialog(mContext);
         wrongDialog.setContentView(R.layout.wrong_dialog);
@@ -30,6 +34,7 @@ public class WrongDialog {
             @Override
             public void onClick(View view) {
                 wrongDialog.dismiss();
+                mquizActivity.showQuestions();
             }
         });
 
