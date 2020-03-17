@@ -572,6 +572,9 @@ public class QuizActivity extends AppCompatActivity {
         resultData.putExtra("TotalQuestion", questionTotalCount);
         resultData.putExtra("CorrectQues", correctAns);
         resultData.putExtra("WrongQues", wrongAns);
+
+        resultData.putExtra("Category", categoryValue);
+
         startActivity(resultData);
 
     }

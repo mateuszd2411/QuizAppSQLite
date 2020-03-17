@@ -24,6 +24,8 @@ public class ResultActivity extends AppCompatActivity {
 
     private long backPressedTime;
 
+    String CategoryAgainValue = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +54,7 @@ public class ResultActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent = new Intent(ResultActivity.this, QuizActivity.class);
+                intent.putExtra("Category", CategoryAgainValue);
                 startActivity(intent);
 
             }
@@ -65,6 +68,10 @@ public class ResultActivity extends AppCompatActivity {
         int totalQuestion = intent.getIntExtra("TotalQuestion",0);
         int correctQues = intent.getIntExtra("CorrectQues",0);
         int wrongQues = intent.getIntExtra("WrongQues",0);
+
+        CategoryAgainValue = intent.getStringExtra("Category");
+
+
 
         txtTotalQuizQues.setText("Total Ques: " + String.valueOf(totalQuestion));
         txtCorrectQuest.setText("Correct: " + String.valueOf(correctQues));
