@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Final Score"
+            android:text="Times Up!"
             android:layout_gravity="center"
             android:textSize="25sp"
             android:textStyle="bold"
@@ -23,10 +23,9 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/text_final_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Final Score:"
+        android:text="Game Over"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:textSize="25sp"
@@ -34,7 +33,7 @@
         android:textColor="#000"
         android:padding="20dp"/>
     <Button
-        android:id="@+id/bt_final_score"
+        android:id="@+id/bt_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

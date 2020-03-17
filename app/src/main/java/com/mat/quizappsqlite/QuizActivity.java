@@ -49,7 +49,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private int correctAns = 0, wrongAns = 0;
 
-    private FinalScoreDialog finalScoreDialog;
+    private TimerDialog timerDialog;
     private CorrectDialog correctDialog;
     private WrongDialog wrongDialog;
     private PlayAudioForAnswers playAudioForAnswers;
@@ -79,7 +79,7 @@ public class QuizActivity extends AppCompatActivity {
 
         defaultTextColor = rb1.getTextColors();
 
-        finalScoreDialog = new FinalScoreDialog(this);
+        timerDialog = new TimerDialog(this);
         correctDialog = new CorrectDialog(this);
         wrongDialog = new WrongDialog(this);
         playAudioForAnswers = new PlayAudioForAnswers(this);
@@ -495,8 +495,9 @@ public class QuizActivity extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(getApplicationContext(), QuizActivity.class);
-                    startActivity(intent);
+
+                    timerDialog.timerDialog();
+
                 }
             }, 2000);
 
