@@ -66,6 +66,8 @@ public class QuizActivity extends AppCompatActivity {
 
     private long backPressedTime;
 
+    private String categoryValue;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +75,10 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
 
         setupUI();
+
+        Intent intentCategory = getIntent();
+        categoryValue = intentCategory.getStringExtra("Category");
+
 
         fetchDB();
 
@@ -105,7 +111,7 @@ public class QuizActivity extends AppCompatActivity {
     private void fetchDB(){
 
         QuizDbHelper dbHelper = new QuizDbHelper(this);
-        questionList = dbHelper.getAllQuestionsWithCategory("History");
+        questionList = dbHelper.getAllQuestionsWithCategory(categoryValue);
         startQuiz();
 
     }
