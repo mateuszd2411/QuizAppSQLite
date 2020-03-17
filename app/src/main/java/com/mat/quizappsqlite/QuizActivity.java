@@ -105,7 +105,7 @@ public class QuizActivity extends AppCompatActivity {
     private void fetchDB(){
 
         QuizDbHelper dbHelper = new QuizDbHelper(this);
-        questionList = dbHelper.getAllQuestions();
+        questionList = dbHelper.getAllQuestionsWithCategory("History");
         startQuiz();
 
     }
@@ -495,7 +495,7 @@ public class QuizActivity extends AppCompatActivity {
 
         if (timeleftinMillis < 10000){
 
-            textViewCountDown.setTextColor(ContextCompat.getColor(this,R.color.white));
+            textViewCountDown.setTextColor(ContextCompat.getColor(this,R.color.red));
 
             FLAG = 3;
             playAudioForAnswers.setAudioforAnswer(FLAG);
