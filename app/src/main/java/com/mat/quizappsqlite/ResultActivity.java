@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ResultActivity extends AppCompatActivity {
 
@@ -20,6 +21,8 @@ public class ResultActivity extends AppCompatActivity {
     private int highScore;
     public static final String SHARED_PREFERENCE = "shread_preference";
     public static final String SHARED_PREFERENCE_HIGH_SCORE = "shread_preference_high_score";
+
+    private long backPressedTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +97,22 @@ public class ResultActivity extends AppCompatActivity {
         highScore = sharedPreferences.getInt(SHARED_PREFERENCE_HIGH_SCORE,0);
         textHightScore.setText("High Score: " + String.valueOf(highScore));
 
-
     }
+
+
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()){
+
+            Intent intent = new Intent(ResultActivity.this, PlayActivity.class);
+            startActivity(intent);
+
+        } else {
+
+            Toast.makeText(this, "Press Again to Exit", Toast.LENGTH_SHORT).show();
+
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
+
 }

@@ -65,6 +65,8 @@ public class QuizActivity extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     private long timeleftinMillis;
 
+    private long backPressedTime;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +102,7 @@ public class QuizActivity extends AppCompatActivity {
         rb2 = findViewById(R.id.radioButton2);
         rb3 = findViewById(R.id.radioButton3);
         rb4 = findViewById(R.id.radioButton4);
+        buttonConfirmNext = findViewById(R.id.button);
 
     }
 
@@ -501,12 +504,29 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
+    }
 
-        if (countDownTimer!= null){
-            countDownTimer.cancel();
-        }
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 
     @Override
@@ -531,5 +551,18 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()){
 
+            Intent intent = new Intent(QuizActivity.this, PlayActivity.class);
+            startActivity(intent);
+
+        } else {
+
+            Toast.makeText(this, "Press Again to Exit", Toast.LENGTH_SHORT).show();
+
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
 }
