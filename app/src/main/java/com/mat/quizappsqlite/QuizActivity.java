@@ -34,7 +34,6 @@ public class QuizActivity extends AppCompatActivity {
     private TextView textViewScore;
     private TextView textViewQuestionsCount;
     private TextView textViewCountDown;
-    private TextView textViewCorrect, textViewWrong;
 
     private ArrayList<Questions> questionList;
     private int questionCounter;
@@ -45,7 +44,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private final Handler handler = new Handler();
 
-    private ColorStateList defaultTextColor;
+
 
     private int correctAns = 0, wrongAns = 0;
 
@@ -77,7 +76,7 @@ public class QuizActivity extends AppCompatActivity {
 
         fetchDB();
 
-        defaultTextColor = rb1.getTextColors();
+
 
         timerDialog = new TimerDialog(this);
         correctDialog = new CorrectDialog(this);
@@ -88,9 +87,6 @@ public class QuizActivity extends AppCompatActivity {
 
     private void setupUI() {
         textViewQuestions = findViewById(R.id.txtQuestionContainer);
-
-        textViewCorrect = findViewById(R.id.txtCorrect);
-        textViewWrong = findViewById(R.id.txtWrong);
         textViewCountDown = findViewById(R.id.txtViewTimer);
         textViewQuestionsCount = findViewById(R.id.txtTotalQuestion);
         textViewScore = findViewById(R.id.txtScore);
@@ -130,37 +126,59 @@ public class QuizActivity extends AppCompatActivity {
 
                     case R.id.radioButton1:
 
-                        rb1.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.when_options_selected));
-                        rb2.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.buttons_background));
-                        rb3.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.buttons_background));
-                        rb4.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.buttons_background));
+                        rb1.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
+                        rb2.setTextColor(Color.BLACK);
+                        rb3.setTextColor(Color.BLACK);
+                        rb4.setTextColor(Color.BLACK);
+
+
+
+                        rb1.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.when_answer_selected));
+                        rb2.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.option_default_background));
+                        rb3.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.option_default_background));
+                        rb4.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.option_default_background));
 
                     break;
 
                     case R.id.radioButton2:
+                        rb2.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
+                        rb1.setTextColor(Color.BLACK);
+                        rb3.setTextColor(Color.BLACK);
+                        rb4.setTextColor(Color.BLACK);
 
-                        rb2.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.when_options_selected));
-                        rb1.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.buttons_background));
-                        rb3.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.buttons_background));
-                        rb4.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.buttons_background));
+
+                        rb2.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.when_answer_selected));
+                        rb1.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.option_default_background));
+                        rb3.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.option_default_background));
+                        rb4.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.option_default_background));
 
                         break;
 
                     case R.id.radioButton3:
+                        rb3.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
+                        rb2.setTextColor(Color.BLACK);
+                        rb1.setTextColor(Color.BLACK);
+                        rb4.setTextColor(Color.BLACK);
 
-                        rb3.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.when_options_selected));
-                        rb2.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.buttons_background));
-                        rb1.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.buttons_background));
-                        rb4.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.buttons_background));
+
+                        rb3.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.when_answer_selected));
+                        rb2.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.option_default_background));
+                        rb1.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.option_default_background));
+                        rb4.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.option_default_background));
 
                         break;
 
                     case R.id.radioButton4:
+                        rb4.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
+                        rb2.setTextColor(Color.BLACK);
+                        rb3.setTextColor(Color.BLACK);
+                        rb1.setTextColor(Color.BLACK);
 
-                        rb4.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.when_options_selected));
-                        rb2.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.buttons_background));
-                        rb3.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.buttons_background));
-                        rb1.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.buttons_background));
+
+                        rb4.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.when_answer_selected));
+                        rb2.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.option_default_background));
+                        rb3.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.option_default_background));
+                        rb1.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.option_default_background));
 
                         break;
 
@@ -196,10 +214,10 @@ public class QuizActivity extends AppCompatActivity {
 
         rbGroup.clearCheck();
 
-        rb1.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.buttons_background));
-        rb2.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.buttons_background));
-        rb3.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.buttons_background));
-        rb4.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.buttons_background));
+        rb1.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.option_default_background));
+        rb2.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.option_default_background));
+        rb3.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.option_default_background));
+        rb4.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.option_default_background));
 
         rb1.setTextColor(Color.BLACK);
         rb2.setTextColor(Color.BLACK);
@@ -272,11 +290,11 @@ public class QuizActivity extends AppCompatActivity {
             case 1:
                 if (currentQuestions.getAnswerNr() == answerNr){
 
-                    rb1.setBackground(ContextCompat.getDrawable(this,R.drawable.when_answer_correct));
-                    rb1.setTextColor(Color.WHITE);
+                    rb1.setBackground(ContextCompat.getDrawable(this,R.drawable.correct_option_background));
+                    rb1.setTextColor(Color.BLACK);
 
                     correctAns++;
-                    textViewCorrect.setText("Correct: " + String.valueOf(correctAns));
+
 
                     score += 10;
                     textViewScore.setText("Score: " + String.valueOf(score));
@@ -293,7 +311,7 @@ public class QuizActivity extends AppCompatActivity {
                     changetoIncorrectColor(rbselected);
 
                     wrongAns++;
-                    textViewWrong.setText("Wrong: " + String.valueOf(wrongAns));
+
 
                     String correctAnswer = (String) rb1.getText();
                     wrongDialog.wrongDialog(correctAnswer, this);
@@ -313,11 +331,11 @@ public class QuizActivity extends AppCompatActivity {
             case 2:
                 if (currentQuestions.getAnswerNr() == answerNr){
 
-                    rb2.setBackground(ContextCompat.getDrawable(this,R.drawable.when_answer_correct));
-                    rb2.setTextColor(Color.WHITE);
+                    rb2.setBackground(ContextCompat.getDrawable(this,R.drawable.correct_option_background));
+                    rb2.setTextColor(Color.BLACK);
 
                     correctAns++;
-                    textViewCorrect.setText("Correct: " + String.valueOf(correctAns));
+
 
                     score += 10;
                     textViewScore.setText("Score: " + String.valueOf(score));
@@ -332,7 +350,7 @@ public class QuizActivity extends AppCompatActivity {
                     changetoIncorrectColor(rbselected);
 
                     wrongAns++;
-                    textViewWrong.setText("Wrong: " + String.valueOf(wrongAns));
+
 
                     String correctAnswer = (String) rb2.getText();
                     wrongDialog.wrongDialog(correctAnswer, this);
@@ -352,11 +370,10 @@ public class QuizActivity extends AppCompatActivity {
             case 3:
                 if (currentQuestions.getAnswerNr() == answerNr){
 
-                    rb3.setBackground(ContextCompat.getDrawable(this,R.drawable.when_answer_correct));
-                    rb3.setTextColor(Color.WHITE);
+                    rb3.setBackground(ContextCompat.getDrawable(this,R.drawable.correct_option_background));
+                    rb3.setTextColor(Color.BLACK);
 
                     correctAns++;
-                    textViewCorrect.setText("Correct: " + String.valueOf(correctAns));
 
                     score += 10;
                     textViewScore.setText("Score: " + String.valueOf(score));
@@ -372,7 +389,7 @@ public class QuizActivity extends AppCompatActivity {
                     changetoIncorrectColor(rbselected);
 
                     wrongAns++;
-                    textViewWrong.setText("Wrong: " + String.valueOf(wrongAns));
+
 
                     String correctAnswer = (String) rb3.getText();
                     wrongDialog.wrongDialog(correctAnswer, this);
@@ -392,11 +409,11 @@ public class QuizActivity extends AppCompatActivity {
             case 4:
                 if (currentQuestions.getAnswerNr() == answerNr){
 
-                    rb4.setBackground(ContextCompat.getDrawable(this,R.drawable.when_answer_correct));
-                    rb4.setTextColor(Color.WHITE);
+                    rb4.setBackground(ContextCompat.getDrawable(this,R.drawable.correct_option_background));
+                    rb4.setTextColor(Color.BLACK);
 
                     correctAns++;
-                    textViewCorrect.setText("Correct: " + String.valueOf(correctAns));
+
 
                     score += 10;
                     textViewScore.setText("Score: " + String.valueOf(score));
@@ -410,7 +427,7 @@ public class QuizActivity extends AppCompatActivity {
                     changetoIncorrectColor(rbselected);
 
                     wrongAns++;
-                    textViewWrong.setText("Wrong: " + String.valueOf(wrongAns));
+
 
                     String correctAnswer = (String) rb4.getText();
                     wrongDialog.wrongDialog(correctAnswer, this);
@@ -439,8 +456,9 @@ public class QuizActivity extends AppCompatActivity {
 
     private void changetoIncorrectColor(RadioButton rbselected) {
 
-        rbselected.setBackground(ContextCompat.getDrawable(this,R.drawable.when_answer_wrong));
-        rbselected.setTextColor(Color.WHITE);
+        rbselected.setBackground(ContextCompat.getDrawable(this,R.drawable.wrong_answer_background));
+
+        rbselected.setTextColor(Color.BLACK);
 
     }
 
@@ -477,14 +495,14 @@ public class QuizActivity extends AppCompatActivity {
 
         if (timeleftinMillis < 10000){
 
-            textViewCountDown.setTextColor(Color.RED);
+            textViewCountDown.setTextColor(ContextCompat.getColor(this,R.color.white));
 
             FLAG = 3;
             playAudioForAnswers.setAudioforAnswer(FLAG);
 
         }else {
 
-            textViewCountDown.setTextColor(defaultTextColor);
+            textViewCountDown.setTextColor(ContextCompat.getColor(this,R.color.white));
         }
 
 
